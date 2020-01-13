@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DATE=`date '+%Y%m%d'`
+i=0
+
+for txt in $(find ~/review/*/*/*/ReviewDate.txt); do
+   BUF=`head -1 $txt`
+   if [ "$BUF" -le "$DATE" ] ; then
+        open `dirname $txt`
+        i=$((i+1)) 
+	if [ $i = 5 ] ; then
+	    break
+	fi
+    fi
+done
+
